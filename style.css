@@ -36,7 +36,7 @@ body{
 
 /*============CORPO DO CONTAINER DE INFORMAÇÕES=============*/
 .container{
-  margin: 10% auto;
+  margin: 4% auto;
   width: 375px;
   display: flex;
   flex-direction: column;
@@ -104,6 +104,11 @@ h2{
   color: hsl(25, 47%, 15%);
   font-size: 32px;
 }
+
+header #saldoImpresso{
+  font-size: 24px;
+}
+
 .sub-texto .barra-esquerda span{
   color: hsla(25, 47%, 15%, 0.607);
   margin-right: 30%;
@@ -136,7 +141,7 @@ h2{
 }
 
 
-/* Estilos para o modal */
+/*=========Estilos para o modal=========*/
 .modal {
   display: none;
   position: fixed;
@@ -150,17 +155,21 @@ h2{
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: hsl(33, 100%, 98%);
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid hsl(27, 66%, 92%);
+  border-radius: 3%;
   width: 80%;
+  height: 65%;
   max-width: 500px;
 }
 
 .close {
-  float: right;
   font-size: 28px;
+  top: 8%;
+  left: 85%;
+  position: absolute;
   font-weight: bold;
   cursor: pointer;
 }
@@ -175,11 +184,62 @@ label {
   margin-top: 10px;
 }
 
-input[type="number"] {
+.styled-input{
+  display: inline-block;
+  position: relative;
   margin-bottom: 20px;
 }
+    
+/*.styled-input label {
+  display: block;
+  /*margin-bottom: 5px;
+  font-weight: bold;
+}*/
 
-button[type="submit"] {
-  align-self: center;
-  margin-top: 20px;
+.styled-input input[type="number"] {
+  margin-bottom: 5%;
+  padding: 2px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 0 2px #f0f0f0; /* Efeito de borda externa */
+  transition: box-shadow 0.3s ease;
 }
+
+.styled-input input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(186, 34%, 60%); /* Efeito de borda externa ao focar */
+}
+
+.container-form{
+  margin-top: 5%;
+  width: 100%;
+}
+.container-form .styled-input{
+  margin: 2%;
+  color: hsl(25, 47%, 15%);
+}
+.container-form .styled-input:last-child{
+  margin-bottom: 0;
+}
+
+button {
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  align-self: center;
+  background-color: hsl(10, 79%, 65%);
+  color: hsl(33, 100%, 98%);
+  font-weight: 700;
+}
+
+/*Remoção dos botões de mudança de número nos inputs do tipo number*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*=========TELAS MAIORES=========*/

@@ -1,5 +1,6 @@
 let loadingScreen = document.querySelector(".loading");
 let logoLoadingScreen = document.querySelector(".logo");
+
 //Habilita uma função assim que a tela for carregada de uma animação de fade out
 window.onload = function () {
   setTimeout(function () {
@@ -8,6 +9,8 @@ window.onload = function () {
 };
 
 let divGraficoBarras = document.querySelector("#grafico-barras");
+let chart; // Declaração da variável de gráfico
+
 fetch("data.json").then((response) => {
   response.json().then((data) => {
     let dias = [];
@@ -17,13 +20,13 @@ fetch("data.json").then((response) => {
       montantes.push(financa.montante);
     });
 
-    new Chart(divGraficoBarras, {
+    chart = new Chart(divGraficoBarras, { // Atribuição do objeto de gráfico à variável
       type: "bar",
       data: {
         labels: dias,
         datasets: [
           {
-            label: "Gastos do dia",
+            label: "Gastos da Semana",
             backgroundColor: "hsl(10, 79%, 65%)",
             borderColor: "hsl(10, 79%, 65%)",
             hoverBackgroundColor: "hsl(186, 34%, 60%)",
@@ -51,7 +54,6 @@ fetch("data.json").then((response) => {
   });
 });
 
-
 const openModalBtn = document.getElementById("open-modal-btn");
 const modal = document.getElementById("modal");
 const closeBtn = document.getElementsByClassName("close")[0];
@@ -74,47 +76,36 @@ window.onclick = function(event) {
   }
 }
 
-// Processa o envio do formulário
-modalForm.addEventListener("submit", function(event) {
-  event.preventDefault();
-});
+// Função para atualizar os dados do gráfico
+function atualizarGrafico() {
+  chart.update();
+}
 
-function salvarDados() {
-    // Obtem os valores dos inputs
-    const saldo = parseFloat(document.getElementById("saldo").value);
-    const dom = parseFloat(document.getElementById("dom").value);
-    const seg = parseFloat(document.getElementById("seg").value);
-    const ter = parseFloat(document.getElementById("ter").value);
-    const quar = parseFloat(document.getElementById("quar").value);
-    const qui = parseFloat(document.getElementById("qui").value);
-    const sex = parseFloat(document.getElementById("sex").value);
-    const sab = parseFloat(document.getElementById("sab").value);
+// Função para atualizar os dados do gráfico com base nos valores do formulário
+function atualizarDados() {
+  let saldo = document.getElementById('saldo');
+  let saldoImpresso = document.querySelector("#saldoImpresso");
+  let semana1 = parseFloat(document.getElementById('sem1').value);
+  let semana2 = parseFloat(document.getElementById('sem2').value);
+  let semana3 = parseFloat(document.getElementById('sem3').value);
+  let semana4 = parseFloat(document.getElementById('sem4').value);
+  let semana5 = parseFloat(document.getElementById('sem5').value);
+  let divida = document.querySelector("#divida");
+
+  // Atualiza os dados no gráfico
+  chart.data.datasets[0].data = [semana1, semana2, semana3, semana4, semana5];
   
-    // Obtem os dados do arquivo JSON
-    fetch("data.json")
-      .then((response) => response.json())
-      .then((data) => {
-        // Atualiza os dados do arquivo JSON com os novos valores
-        data.financas[0].montante = dom;
-        data.financas[1].montante = seg;
-        data.financas[2].montante = ter;
-        data.financas[3].montante = quar;
-        data.financas[4].montante = qui;
-        data.financas[5].montante = sex;
-        data.financas[6].montante = sab;
+  //Somas Gasto
+  soma = semana1 + semana2 + semana3 + semana4 + semana5;
+
+  //valor do saldo
+  subtraiSaldo = saldo.value - soma;
+  saldoImpresso.textContent = "R$ " + subtraiSaldo;
   
-        // Salva os dados atualizados no arquivo JSON
-        fetch("data.json", {
-          method: "PUT",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then(() => {
-          // Exibe uma mensagem de sucesso
-          alert("Dados salvos com sucesso!");
-        });
-      });
-      modal.style.display = "none";
+  //Contas da dívida
+  divida.textContent = "R$ " + soma;
+  atualizarGrafico();
+    closeModal();
   }
-  
+    
+    

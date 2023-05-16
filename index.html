@@ -27,7 +27,7 @@
         <header>
             <div class="barra-esquerda">
                 <span>Meu Saldo</span>
-                <h2>R$ 921,48</h2>
+                <h2>R$<span id="saldoImpresso"> 921,48</span></h2>
             </div>
             <div class="barra-direita">
                 <svg class="fas fa-spinner" width="72" height="48" viewBox="0 0 72 48"
@@ -42,7 +42,7 @@
 
 
         <div class="corpo">
-            <h3>Gastos - últimos 7 dias</h3>
+            <h3>Gastos - do Mês</h3>
 
             <canvas id="grafico-barras">
             </canvas>
@@ -52,7 +52,7 @@
             <div class="sub-texto">
                 <div class="barra-esquerda">
                     <span>Total neste Mês</span>
-                    <h2>R$ 482,48</h2>
+                    <h2 id="divida">R$ 482,48</h2>
                 </div>
                 <div class="barra-direita">
                     <p>+2.4%</p>
@@ -70,38 +70,43 @@
                 <span class="close">&times;</span>
                 <form>
                     <label for="saldo">Saldo:</label>
-                    <input type="number" id="saldo" name="saldo">
+                    <input type="number" id="saldo" 
+                    oninput="if(this.value.length > 7) this.value = this.value.slice(0,7)"
+                    name="saldo">
 
-                    <div>
-                        <label for="dom">Dom:</label>
-                        <input type="number" id="dom" name="dom">
+                    <div class="container-form">
+                        <div class="styled-input">
+                            <label for="sem1">Semana 1:</label>
+                            <input type="number" id="sem1"
+                            oninput="if(this.value.length > 6) this.value = this.value.slice(0,6)"
+                            name="Semana 1">
+                        </div>
+                        <div class="styled-input">
+                            <label for="sem2">Semana 2:</label>
+                            <input type="number" id="sem2"
+                            oninput="if(this.value.length > 6) this.value = this.value.slice(0,6)"
+                            name="Semana 2">
+                        </div>
+                        <div class="styled-input">
+                            <label for="sem3">Semana 3:</label>
+                            <input type="number" id="sem3"
+                            oninput="if(this.value.length > 6) this.value = this.value.slice(0,6)"
+                            name="Semana 3">
+                        </div>
+                        <div class="styled-input">
+                            <label for="sem4">Semana 4:</label>
+                            <input type="number" id="sem4"
+                            oninput="if(this.value.length > 6) this.value = this.value.slice(0,6)"
+                            name="Semana 4">
+                        </div>
+                        <div class="styled-input">
+                            <label for="sem5">Semana 5:</label>
+                            <input type="number" id="sem5"
+                            oninput="if(this.value.length > 6) this.value = this.value.slice(0,6)"
+                            name="Saemana 5">
+                        </div>
                     </div>
-                    <div>
-                        <label for="seg">Seg:</label>
-                        <input type="number" id="seg" name="seg">
-                    </div>
-                    <div>
-                        <label for="ter">Ter:</label>
-                        <input type="number" id="ter" name="ter">
-                    </div>
-                    <div>
-                        <label for="quar">Quar:</label>
-                        <input type="number" id="quar" name="quar">
-                    </div>
-                    <div>
-                        <label for="qui">Qui:</label>
-                        <input type="number" id="qui" name="qui">
-                    </div>
-                    <div>
-                        <label for="sex">Sex:</label>
-                        <input type="number" id="sex" name="sex">
-                    </div>
-                    <div>
-                        <label for="sab">Sab:</label>
-                        <input type="number" id="sab" name="sab">
-                    </div>
-
-                    <button type="button" onclick="salvarDados()">Salvar</button>
+                    <button type="button" onclick="atualizarDados()">Salvar</button>
                 </form>
             </div>
         </div>
