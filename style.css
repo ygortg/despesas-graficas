@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: hsl(27, 66%, 92%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+}
+
+/*============TELA DE LOADING=============*/
+.loading{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: hsl(10, 79%, 65%);
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+.logo{
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  animation: spin 2s ease-out both;
+}
+.desactive{
+  opacity: 0;
+  z-index: -1;
+}
+
+/*============CORPO DO CONTAINER DE INFORMAÇÕES=============*/
+.container{
+  margin: 10% auto;
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+}
+
+header{
+  background-color: hsl(10, 79%, 65%);
+  color: hsl(33, 100%, 98%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 20px;
+  border-radius: 1.3rem;
+}
+span{
+  font-size: 14px;
+}
+h2{
+  font-size: 24px;
+}
+
+/*=========ANIMAÇÃO DE ROTAÇÃO=========*/
+.fa-spinner:hover {
+  font-size: 50px;
+  animation: spin 1.2s ease-out both;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.corpo{
+  text-align: center;
+  background-color: hsl(33, 100%, 98%);
+  padding: 30px;
+  font-size: 18px;
+  border-radius: 1.3rem;
+}
+.corpo h3{
+  font-size: 28px;
+  margin-bottom: 10%;
+}
+
+
+/*=========BARRA SEPARADORA=========*/
+.corDaBarra{
+  margin-top: 10%;
+  border-color:  hsla(27, 66%, 92%, 0.466);
+}
+
+/*=========TEXTO INFERIOR DO CONTAINER=========*/
+.sub-texto{
+  margin-top: 5%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.sub-texto h2{
+  color: hsl(25, 47%, 15%);
+  font-size: 32px;
+}
+.sub-texto .barra-esquerda span{
+  color: hsla(25, 47%, 15%, 0.607);
+  margin-right: 30%;
+}
+
+.barra-direita{
+  font-size: 15px;
+}
+.barra-direita p{
+  font-weight: 800;
+  margin-left: 60%;
+}
+.barra-direita span{
+  color: hsla(25, 47%, 15%, 0.607);
+}
+
+/*=========TEXTO BOTÃO DO GRÁFICO=========*/
+.button{
+  cursor: pointer;
+  text-align: center;
+  margin-top: 5%;
+  padding: 15px 0;
+  border-radius: 8px;
+  background-color: hsl(186, 34%, 60%);
+}
+.button:hover{
+  color: hsl(33, 100%, 98%);
+  font-weight: 700;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilos para o modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Estilos para o formulário */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input[type="number"] {
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  align-self: center;
+  margin-top: 20px;
+}

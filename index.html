@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
+    <title>Despesas Semanais</title>
+</head>
+
+<body>
+    <section class="loading">
+        <div>
+            <svg class="logo" width="144" height="144" viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" fill-rule="evenodd">
+                    <circle fill="#382314" cx="48" cy="24" r="24" />
+                    <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23" />
+                </g>
+            </svg>
+        </div>
+    </section>
+
+    <div class="container">
+        <header>
+            <div class="barra-esquerda">
+                <span>Meu Saldo</span>
+                <h2>R$ 921,48</h2>
+            </div>
+            <div class="barra-direita">
+                <svg class="fas fa-spinner" width="72" height="48" viewBox="0 0 72 48"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" fill-rule="evenodd">
+                        <circle fill="#382314" cx="48" cy="24" r="24" />
+                        <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23" />
+                    </g>
+                </svg>
+            </div>
+        </header>
+
+
+        <div class="corpo">
+            <h3>Gastos - últimos 7 dias</h3>
+
+            <canvas id="grafico-barras">
+            </canvas>
+
+            <hr class="corDaBarra">
+
+            <div class="sub-texto">
+                <div class="barra-esquerda">
+                    <span>Total neste Mês</span>
+                    <h2>R$ 482,48</h2>
+                </div>
+                <div class="barra-direita">
+                    <p>+2.4%</p>
+                    <span>Do ultimo Mês</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="button" id="open-modal-btn">
+            <p>Monte o meu Gráfico</p>
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form>
+                    <label for="saldo">Saldo:</label>
+                    <input type="number" id="saldo" name="saldo">
+
+                    <div>
+                        <label for="dom">Dom:</label>
+                        <input type="number" id="dom" name="dom">
+                    </div>
+                    <div>
+                        <label for="seg">Seg:</label>
+                        <input type="number" id="seg" name="seg">
+                    </div>
+                    <div>
+                        <label for="ter">Ter:</label>
+                        <input type="number" id="ter" name="ter">
+                    </div>
+                    <div>
+                        <label for="quar">Quar:</label>
+                        <input type="number" id="quar" name="quar">
+                    </div>
+                    <div>
+                        <label for="qui">Qui:</label>
+                        <input type="number" id="qui" name="qui">
+                    </div>
+                    <div>
+                        <label for="sex">Sex:</label>
+                        <input type="number" id="sex" name="sex">
+                    </div>
+                    <div>
+                        <label for="sab">Sab:</label>
+                        <input type="number" id="sab" name="sab">
+                    </div>
+
+                    <button type="button" onclick="salvarDados()">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
