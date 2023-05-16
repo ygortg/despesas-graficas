@@ -97,15 +97,20 @@ function atualizarDados() {
   
   //Somas Gasto
   soma = semana1 + semana2 + semana3 + semana4 + semana5;
+  if(soma == null || soma == undefined || isNaN(soma)){
+    window.alert("Selecione valores válidos");
+    return
+  }
+
 
   //valor do saldo
   subtraiSaldo = saldo.value - soma;
-  saldoImpresso.textContent = "R$ " + subtraiSaldo;
+  saldoImpresso.textContent = subtraiSaldo;
   
   //Contas da dívida
   divida.textContent = "R$ " + soma;
   atualizarGrafico();
-    closeModal();
-  }
+  modal.style.display = "none";
+}
     
     

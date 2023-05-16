@@ -111,7 +111,6 @@ header #saldoImpresso{
 
 .sub-texto .barra-esquerda span{
   color: hsla(25, 47%, 15%, 0.607);
-  margin-right: 30%;
 }
 
 .barra-direita{
@@ -202,7 +201,7 @@ label {
   font-size: 16px;
   border: none;
   border-radius: 20px;
-  background-color: #f0f0f0;
+  background-color: white;
   box-shadow: 0 0 0 2px #f0f0f0; /* Efeito de borda externa */
   transition: box-shadow 0.3s ease;
 }
@@ -210,6 +209,12 @@ label {
 .styled-input input[type="number"]:focus {
   outline: none;
   box-shadow: 0 0 0 2px hsl(186, 34%, 60%); /* Efeito de borda externa ao focar */
+}
+#saldo{
+  border: none;
+  box-shadow: 0 0 0 2px #f0f0f0; /* Efeito de borda externa */
+  border-radius: 4px;
+
 }
 
 .container-form{
@@ -243,3 +248,18 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /*=========TELAS MAIORES=========*/
+@media (max-width:768px){
+  .container{
+    margin: 2% auto
+  }
+
+  .close {
+    font-size: 28px;
+    top: 5%;
+    left: 85%;
+    position: absolute;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+}
